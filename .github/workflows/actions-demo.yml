@@ -1,9 +1,12 @@
-name: GitHub Actions Demo
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-on: [push]
+name: Testing
+on: push
+
 jobs:
-  Explore-GitHub-Actions:
+  test_project:
     runs-on: ubuntu-latest
     steps:
-      - run: pip3 install python-telegram-bot
-      - run: python main.py
+    - uses: actions/checkout@v2
+    - name: Run Django unit tests
+      run: |
+        pip3 install --user python-telegram-bot
+        python3 main.py
